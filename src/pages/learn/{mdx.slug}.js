@@ -14,14 +14,14 @@ const BlogPost = ( {data} ) => {
 }
 
 export const query = graphql`
-query($id: String) {
-  mdx(id: {eq: $id}) {
-    body
-    frontmatter {
-      title
+  query($id: String) {
+    mdx(id: {eq: $id}) {
+      body
+      frontmatter {
+        title
+        }
       }
-    }
-}
+  }
 `
 
 export default BlogPost
