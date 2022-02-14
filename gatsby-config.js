@@ -7,17 +7,17 @@ module.exports = {
       "gatsby-plugin-image",
       "gatsby-plugin-sharp",
       {
-        resolve: "gatsby-source-filesystem",
+        resolve: `gatsby-source-filesystem`,
         options: {
-          name: `blog`, 
-          path: `${__dirname}/blog`,
+        name: `blog`,
+        path: `${__dirname}/blog/`,
         }
       },
       {
-        resolve: "gatsby-source-filesystem",
+        resolve: `gatsby-source-filesystem`,
         options: {
-          name: `learn`, 
-          path: `${__dirname}/learn`,
+        name: `learn`,
+        path: `${__dirname}/learn/`,
         }
       },
       "gatsby-plugin-mdx",
