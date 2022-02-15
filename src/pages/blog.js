@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
-import Layout from '../../components/layout'
+import Layout from '../components/layout'
 
 const BlogPage = ({ data }) => {
     return (
@@ -10,7 +10,7 @@ const BlogPage = ({ data }) => {
                 data.allMdx.nodes.map( (node) => (
                     <article key={node.id}>
                         <h2>
-                            <Link to={`/learn/${node.slug}`}>
+                            <Link to={`/blog/${node.slug}`}>
                                 {node.frontmatter.title}
                             </Link>
                         </h2>
@@ -24,7 +24,7 @@ const BlogPage = ({ data }) => {
 
 export const query = graphql`
     query {
-        allMdx{
+        allMdx {
             nodes {
                 frontmatter {
                     title
