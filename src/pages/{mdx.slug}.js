@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layout'
 
-const BlogPost = ( {data} ) => {
+const ALLPost = ( {data} ) => {
     return (
         <Layout>
             <MDXRenderer>
@@ -24,4 +24,4 @@ query($id: String) {
 }
 `
 
-export default BlogPost
+export default ALLPost
