@@ -1,0 +1,392 @@
+---
+title: "#5.1 Tour of CRA"
+date: "2022-02-18"
+slug: nomadcoders/react-for-beginners/5-1
+tags: ["learn"]
+---
+
+# 📘
+# #5.1 Tour of CRA
+
+<div style="color:gray; font-style:italic;">2022/02/18 금요일</div>
+
+<br />
+
+이번 섹션에서 create-react-app과 좀 더 친해져봅시다.
+
+컴포넌트를 만들고 props도 넣어보고, PropTypes도 확인해보겠습니다.
+
+이전 강의에서 배웠던 것처럼 수동으로도 할 수 있지만 지금부터는 create-react-app을 사용하겠습니다.
+
+<br />
+
+먼저 src폴더에 `Button.js`이라고 하는 새로운 파일을 만듭니다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+function Button({text}){
+	return <button>{text}</button>
+}
+
+export default Button
+```
+
+<div style="color:gray; font-size:11px;">Button.js</div> 
+
+text props를 가지고 text와 함께 button을 반환하는 함수를 만들고 export 해주었습니다.
+
+<br />
+
+`App.js`에서 Button을 가져와서 사용할 수 있도록 작성해봅시다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import Button from "./Button";
+
+function App() {
+	return (
+		<div>
+			<h1>Welcome back!!!</h1>
+			<Button text={"Continue"}/>
+		</div>
+	);
+}
+
+export default App;
+```
+
+<div style="color:gray; font-size:11px;">App.js</div>
+
+<br /> 
+
+Button을 import했지만 사용하지 않고 콘솔에서 `npm start`를 실행시킬 경우 “Button은 정의 되었지만 전혀 사용되지 않았다는” 경고 메세지를 확인할 수 있습니다. 이건 create-react-app이 주는 일종의 도움입니다.
+
+create-react-app은 앞으로 우리의 코드를 좀 더 낫게 만들기 위해 이런것들을 이야기 해 줄 겁니다.
+
+<br />
+
+`App.js`을 작성해서 알겠지만 보다시피 React 동작 방식에서 그 무엇도 다른건 없습니다.
+
+단지 설치 할 때만 달랐을 뿐이지  컴포넌트를 렌더링하거나 props를 사용하는 법 전부 같습니다.
+
+<br />
+
+하지만 이제 우리는 코드를 좀더 답답하지 않게 만들어주는 여러 파일들을 가질 수 있게 되었습니다.
+
+<br />
+
+VSCode는 우리에게 필요할 것 같은 props를 확인할 수 있게 해줍니다.
+
+또는 마우스를 Button 위에 올려 놓는다면 Button은 text prop을 필요하다는 걸 알려줄겁니다.
+
+이건 매우 매우 유용한 기능입니다.
+
+create-react-app으로 작업함에 전반적인 요점은 개발 환경이 훨씬 낫다는 점입니다.
+
+<br />
+
+이제 PropTypes를 Checking 해 봅시다.
+
+새로운 콘솔창을 열고 PropTypes를 install 합니다.
+
+```jsx
+npm i prop-types
+```
+
+<div style="color:gray; font-size:11px;">Terminal</div>
+
+<br />
+
+설치가 다 되었다면 PropTypes를 prop-types로 부터 import합니다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import PropTypes from "prop-types"
+```
+
+<div style="color:gray; font-size:11px;">Button.js</div>
+
+<br />
+
+이제 PropTypes를 사용해 봅시다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import PropTypes from "prop-types"
+
+function Button({text}){
+	return <button>{text}</button>
+}
+
+Button.propTypes = {
+	text:PropTypes.string.isRequired,
+}
+
+export default Button
+```
+
+<div style="color:gray; font-size:11px;">Button.js</div>
+
+`Button.propTypes`을 입력하고 이전에 만든 것과 동일하게 Button에는 text가 필요하다고 작성합니다.
+
+보다시피 전에 했던 코드와 같은 코드 입니다. 단지 setup(설치 및 초기 설정) 때만 다를 뿐입니다.
+
+VSCode의 아주 나이스한 자동완성 기능으로 string을 적고, isRequired를 넣어줄 수 도 있었습니다.
+
+<br />
+
+이것이 전체적인, create-react-app으로 작업할 때의 중요 포인트입니다.
+
+코드도 같고, PropType도 같고 그리고 props를 받아내는 방법도 똑같지만 이번에는 서로 다른 파일들로 코드를 분할하는 등의 작업을 할 수 있게 되었습니다.
+
+그리고 특정 컴포넌트를 위한 CSS파일을 만들 수 있는 기능을 얻었습니다. 이는 굉장히 좋은 일 입니다.
+
+<br />
+
+create-react-app으로 작업할 때  CSS에 관한 두 가지 선택지를 가질 수 있습니다.
+
+<br />
+
+한개의 CSS파일(`styles.css`)을 만드는 옵션 (평범한 CSS입니다.)
+
+<div style="color:gray; font-size:12px;">CSS</div>
+
+```css
+button {
+	color: white;
+	background-color: tomato;
+}
+```
+
+<div style="color:gray; font-size:11px;">styles.css</div>
+
+만약 이 CSS옵션을 사용하고 싶다면 아래 코드처럼 index로 가서 import를 해야합니다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import "./styles.css";
+```
+
+<div style="color:gray; font-size:11px;">index.js</div>
+
+이 `styles.css`를 import했을 때 버튼은 토마토 색이 됩니다.
+
+이미 익숙하고 편하고 간단하기 때문에 이 방법도 괜찮습니다.
+
+해야 할 건 단지 CSS를 작성하는 것 뿐이고 그걸 import해서, CSS가 작동해야 할 것들을 작동시키는 것뿐입니다. 
+
+이제 모든 버튼들은 토마토색 배경을 갖게 될것입니다.
+
+<br />
+
+하지만 만약 원한다면 CSS파일을 `index.js`에 import시키지 않는 방법도 있습니다.
+
+예를 들어 만약 다른 버튼을 한개 더 추가하고 그 새로운 버튼의 배경색으로는 토마토색을 원하지 않는다면 두번째 옵션을 사용하면 됩니다.
+
+<br />
+
+이번엔 `styles.css`를 사용하지 않고 두번째 옵션으로 진행하겠습니다.
+
+왜냐하면  `styles.css`는 모든 버튼들의 배경색을 일괄적으로 토마토 색으로 만들어버리기 때문입니다.
+
+<br />
+
+`styles.css`는 삭제해 버리고 이전 섹션에서 사용해본  style prop를 사용해 봅시다.
+
+<br />
+
+한번 더 말하지면, 우리가 이미 create-react-app 내에 있기 때문에 나이스한 자동완성 기능을 가질 수 있습니다. back만 치더라도 모든 옵션들이 보이는 기능이죠.
+
+자동완성기능을 사용하기 때문에 오타를 낼 확률도 적어졌습니다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import PropTypes from "prop-types"
+
+function Button({text}){
+	return <button style={{
+		backgroundColor: "tomato",
+		color: "white",
+	}}>{text}</button>
+}
+
+Button.propTypes = {
+	text:PropTypes.string.isRequired,
+}
+
+export default Button
+```
+
+<div style="color:gray; font-size:11px;">Button.js</div>
+
+그러나 이제 우리는 CSS의 힘을 잃었습니다. 전체적으로 변경할 수 없고 javascript 코드를 작성해야합니다.
+
+<br />
+
+HTML을 본다면 방금 넣어준 style이 확인가능합니다.
+
+<br />
+
+만약 global(전역적인) CSS style을 원하지 않는다면 첫번째 옵션을 사용해도 좋습니다.
+
+그러나 생각해 보십시오. 나중에는 엄청나게 많은 코드가 있을 때, 그리고 어플리케이션을 위한 엄청나게 많은 CSS가 단 하나의 파일이 있다면 말입니다. 이는 미친 것입니다.
+
+<br />
+
+하지만 style을 직접 넣고 싶지도 않습니다. CSS를 import할 때, CSS 파일이 적용하려는 파일 모든 부분에 import되는 걸 원하지 않지만, CSS를 쓸 수 있었으면 합니다.
+
+<br />
+
+create-react-app으로 작업할 때의 포인트는 “분할하고” “정복하는”겁니다.
+
+이제 create-react-app을 배울때 진짜 멋진 점이 나오는데, 바로 CSS modules이라는 겁니다.
+
+<br />
+
+`styles.css`의 이름을 `Button.module.css` 로 바꿔봅시다.
+ 
+<br />
+
+`Button.module.css` 내에서 우린 btn이라는 클래스를 만들어 볼 겁니다.
+
+<div style="color:gray; font-size:12px;">CSS</div>
+
+```css
+.btn {
+	color: white;
+	background-color: tomata;
+}
+```
+
+<div style="color:gray; font-size:11px;">Button.module.css</div>
+
+<br />
+
+하지만 `Button.module.css`를 `index.js`에 import하지는 않을 겁니다.
+
+<br />
+
+대신에 이 스타일을 `Button.js`에 import 시켜줍시다.
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import PropTypes from "prop-types";
+import style from "./Button.moduel.css";
+
+function Button({text}){
+	return <button className="styles.btn">{text}</button>;
+}
+
+Button.propTypes = {
+	text:PropTypes.string.isRequired,
+};
+
+export default Button;
+```
+
+<div style="color:gray; font-size:11px;">Button.js</div>
+
+<br />
+
+굉장히 멋진 일입니다. 버튼에 className을 그냥 btn 이런 식으로 추가하지 않고 `styles.btn`를 입력해 주었습니다.
+
+<br />
+
+지금 우리는 CSS 코드를 작성하고 있습니다.
+
+하지만 create-react-app은 이 CSS 코드를  “btn을 안에 갖고 있는” javascript 오브젝트로 변환시켜줍니다.
+
+<br />
+
+브라우저로 가보면 버튼은 여전히 토마토색입니다.
+
+그리고 create-react-app은 무작위적인 랜덤 class를 갖는다는 걸 알 수 있습니다.
+
+<br />
+
+제 생각에는 create-react-app으로 작업할때 최고의 부분은 style들도 modular(모듈러)가 될 수 있다는 점이 아닐까 싶습니다.
+
+<br />
+
+고로 이제 동일한 class btn을 다른 파일 내에서도 사용할 수 있습니다.
+
+하지만 create-react-app은 랜덤하게 보이는 클래스 이름을 만들어 낼 것입니다.
+
+<br />
+
+이제 우리는 어플리케이션을 위한 다른 CSS module도 만들어 보는 연습해 봅시다.
+
+어플리케이션을 위한 거니까 `App.module.css`라고 해보겠습니다. 
+
+이름은 중요하지 않습니다. App이 될 수 도 있고, xx가 될수도 있습니다. `.modue.css`만 붙인다면 뭐든 상관없습니다.
+
+<br />
+
+이제 우리는 타이틀을 위한 class를 만들어 봅시다.
+
+<div style="color:gray; font-size:12px;">CSS</div>
+
+```css
+.title {
+	font-family: -apple-system, BlinkMackSystemFont, "Segoe UI", Robato, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-size: 18px;
+}
+```
+
+<div style="color:gray; font-size:11px;">App.module.css</div>
+
+위와 같이 CSS 코드를 작성해 보았습니다.
+
+이는 CSS를 JavaScript 오브젝트 형식으로 쓰는 것보다는 훨씬 나은 방법입니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">React</div>
+
+```jsx
+import Button from "./Button";
+import styles. from "./App.module.css"
+
+function App() {
+	return (
+		<div>
+			<h1 className="style.title">Welcome back!!!</h1>
+			<Button text={"Continue"}/>
+		</div>
+	);
+}
+
+export default App;
+```
+
+<div style="color:gray; font-size:11px;">App.js</div>
+
+그리고 `App.js`에 `App.modue.css`를 import를 해주고 h1에 style을 입힐 수 있도록 className을 적어 줬습니다.
+
+<br />
+
+이제 브라우저에서 보면 현재 h1은 class name과 자기 만의 스타일을 갖게 되었습니다.
+
+다른 클래스 이름을 사용하기 위해 기억하고 있는 것보다 이것이 훨씬 더 좋은 방안입니다.
+
+create-react-app이 클래스의 이름을 다 랜덤하게(각기 다르게) 바꿔줄 것이기 때문에 더 이상 다른 클래스 이름들을 기억할 필요가 없습니다.
+
+<br />
+
+이제 우리는 컴포넌트를 분리해서 만들 수 있고, 그 컴포넌트를 위한 CSS를 만들 수 있습니다.
+
+이것은 bubble처럼 독립적인 형태가 될것입니다.
+
+다시 말해서, 만약 어떤 이유에서 같은 class 이름을 사용한다면,  `App.module.css`의 title 클래스 이름을 사용하고 또한 `Button.moudle.css`에 title 클래스가 있어 같은 클래스 이름을 사용한다고 해도, HTML 내에서는, 클래스 이름이 랜덤 방식으로 생성되기 때문에 전혀 문제 되지 않습니다.
+
+<br />
+
+이번 섹션에서는 create-react-app이 개발자들에게  얼마나 큰 도움을 주는지 컴포넌트들과 스타일을 독립적이게 유지시켜주는지 살펴봤습니다.
