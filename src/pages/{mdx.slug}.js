@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 
 const ALLPost = ( {data} ) => {
     return (
-        <Layout>
+        <Layout pageTitle={data.mdx.frontmatter.title}>
             <MDXRenderer>
                 {data.mdx.body}
             </MDXRenderer>
