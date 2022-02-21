@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 const LearnPage = ({ data }) => {
     return (
-        <Layout>
+        <Layout pageTitle="Learn">
             <ul>
             {
                 data.allMdx.nodes.map( (node) => (
