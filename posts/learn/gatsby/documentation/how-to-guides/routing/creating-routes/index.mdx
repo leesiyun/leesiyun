@@ -1,0 +1,69 @@
+---
+icon: 📖
+title: "Creating routes"
+date: "2022-02-22"
+slug: gatsby/documentation/how-to-guides/routing/creating-routes
+folder: learn
+tags: [""]
+---
+
+# 📖
+# Creating routes
+
+### 경로 생성
+
+<div style="color:gray; font-style:italic;">2022/02/22 화요일</div>
+
+[https://www.gatsbyjs.com/docs/how-to/routing/creating-routes/](https://www.gatsbyjs.com/docs/how-to/routing/creating-routes/)
+
+<br />
+
+### **목차**
+
+개별 페이지 만들기
+
+컬렉션 라우팅
+
+마크다운에서 페이지 만들기
+
+gatsby-node.js 사용
+
+동적 및 인증된 라우팅
+
+<br />
+
+### 예
+
+[컬렉션 라우팅 사용](https://github.com/gatsbyjs/gatsby/tree/master/examples/route-api)
+
+Gatsby에서 경로를 생성하는 방법에는 여러 가지가 있습니다.
+
+<br />
+
+### **개별 페이지 만들기**
+
+페이지를 만드는 가장 간단한 방법은 `src/pages` 디렉토리에 있는 페이지에서 React 컴포넌트를 내보내는 것입니다. 예를 들어 `src/pages/about.js`에서 구성 요소를 내보내면 `/about`에 경로가 생성됩니다. [라우팅 참조](https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#define-routes-in-srcpages)에 대한 자세한 내용
+
+<br />
+
+### 컬렉션 라우팅
+
+Gatsby는 단일 구성 요소를 기반으로 여러 템플릿 페이지를 지원합니다. 예를 들어 `src/pages/products/{[Product.name](http://product.name/)}.js`에 있는 파일은 CMS 또는 기타 데이터 소스에서 들어오는 정보를 기반으로 `/products/burger`와 같은 페이지를 생성할 수 있습니다. 자세한 내용은  [File System Route API ](https://www.notion.so/File-System-Route-API-192a7df6df884ba6b8d3822e0398e97e)  설명서를 참조하십시오.
+
+<br />
+
+### 마크다운에서 페이지 만들기
+
+더 나은 콘텐츠 구성 경험을 위해 Gatsby에서는 [마크다운 파일](https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/) 또는 [MDX 파일](https://www.gatsbyjs.com/docs/how-to/routing/mdx/)을 사용하여 개별 페이지와 동적 라우트(경로)를 모두 생성할 수 있습니다.
+
+<br />
+
+### gatsby-node.js 사용
+
+라우팅을 보다 세밀하게 제어해야 하는 경우, 프로그래밍 방식으로 `gatsby-node.js`에서 페이지를 만들 수 있습니다. [라우팅 참조](https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs)에 대한 자세한 내용
+
+<br />
+
+### 동적 및 인증된 라우팅
+
+민감한 정보를 다루는 페이지의 경우 Gatsby를 사용하여 인증 게이트 뒤에 있는 [클라이언트 전용 경로](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication/)를 생성할 수 있습니다.

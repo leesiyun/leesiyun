@@ -1,34 +1,34 @@
 import * as React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import PostLink from "../components/PostLink"
 
-const LearnPage = ({ data }) => {
+const LearnPage = ({
+    data: {
+        allMdx: { nodes },
+    },
+  }) => {
+    const Posts = nodes
+        .filter(node => node.frontmatter.folder === "learn")
+        .map(node => <PostLink key={node.id} post={node} />)
     return (
         <Layout pageTitle="Learn">
             <ul>
-            {
-                data.allMdx.nodes.map( (node) => (
-                    <article key={node.id}>
-                        <h2>
-                            <Link to={`${node.frontmatter.slug}`}>
-                                {node.frontmatter.title}
-                            </Link>
-                        </h2>
-                    </article>
-                ))
-            }
+                <div>{Posts}</div>
             </ul>
         </Layout>
     )
-}
+  }
 
 export const query = graphql`
     query {
-        allMdx {
+        allMdx(sort: {fields: frontmatter___date, order: DESC}) {
             nodes {
                 frontmatter {
                     title
                     slug
+                    date
+                    folder
                 }
                 id
                 slug
