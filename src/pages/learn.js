@@ -14,7 +14,7 @@ const LearnPage = ({
     return (
         <Layout pageTitle="Learn">
             <ul>
-                <div>{Posts}</div>
+                {Posts}
             </ul>
         </Layout>
     )
@@ -29,6 +29,7 @@ export const query = graphql`
                     slug
                     date
                     folder
+                    icon
                 }
                 id
                 slug
