@@ -5,7 +5,11 @@ import Layout from '../components/Layout'
 
 const ALLPost = ( {data} ) => {
     return (
-        <Layout pageTitle={data.mdx.frontmatter.title}>
+        <Layout 
+            pageTitle={data.mdx.frontmatter.title} 
+            postIcon={data.mdx.frontmatter.icon}
+            postDate={data.mdx.frontmatter.data}
+        >
             <MDXRenderer>
                 {data.mdx.body}
             </MDXRenderer>
@@ -14,14 +18,16 @@ const ALLPost = ( {data} ) => {
 }
 
 export const query = graphql`
-query($id: String) {
-  mdx(id: {eq: $id}) {
-    body
-    frontmatter {
-      title
-      }
+    query($id: String) {
+        mdx(id: {eq: $id}) {
+            body
+            frontmatter {
+                title
+                date
+                icon
+            }
+         }
     }
-}
 `
 
 export default ALLPost

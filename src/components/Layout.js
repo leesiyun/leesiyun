@@ -3,7 +3,12 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import * as styles from './Layout.module.css'
 import Post from "./Post"
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ 
+        pageTitle, 
+        children, 
+        postIcon,
+        postDate
+    }) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -46,7 +51,12 @@ const Layout = ({ pageTitle, children }) => {
                 </ul>
             </nav>
             <main>
-                <Post post={children} />
+                <Post 
+                    postIcon={postIcon}
+                    pageTitle={pageTitle}
+                    postDate={postDate}
+                    post={children} 
+                />
             </main>
         </div>
     )

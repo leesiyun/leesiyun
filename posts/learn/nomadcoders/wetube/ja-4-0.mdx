@@ -1,0 +1,187 @@
+---
+icon: 
+title: "🇯🇵 #4.0 What are Routers?"
+date: "2022-02-23"
+slug: nomadcoders/wetube/ja-4-0
+folder: learn
+tags: [""]
+---
+
+# #4.0 What are Routers?
+
+
+ルーターは、コントローラと`URL`の管理を容易にします。
+
+簡単に言えばミニアプリケーションを作らせてくれるものです。
+
+これはプログラマーのための構造です。
+
+<br />
+
+今度はREAMDファイルのルーターを作る前にプランを書きましょう。
+
+ルーターを理解する最良の方法は、自分で作ってみて、プロジェクトに適用してみることです。
+
+プロジェクトを作る際、まず考えるべきことはどのような種類のデータを使うかです。
+
+この`wetube`プロジェクトでは大きく2種類のデータが存在します。 一番目はビデオです。
+
+ビデオをアップロードできたり、修正できたり、字幕もつけられます。
+
+そして望むならビデオを消すこともできます。
+
+そしてこのすべてを行うのはユーザーです。
+
+ユーザーがアカウントを作り、ログインしてプロフィールを見ることです。
+
+プロフィールを修正することも、又はプロフィールを消すこともできます。
+
+そしてパスワードを変更することも可能です。
+
+ユーザーとビデオが最大の2つだということが分かると思います。
+
+なので今回のプロジェクトのドメインは`video`と`user`、この2つです。
+
+さて、このドメインをURL次元で考えてみましょう。 そしてURLをデザインしてみましょう。
+
+例えば、`home`ページは普通、ブラウザでこのように表示されます。`/`
+
+次は`join`ページがあるはずです。
+
+その次はログインするための`login`ページ、検索（`search`）ページもあるかもしれません。
+
+<br />
+
+それではユーザーページを考えてみましょう。 ユーザーページには、プロフィールの修正ページが必要でしょう。
+
+そのURLは`/edit-profile`で、このURLを通じてプロフィールの修正ページに送信されます。
+
+それから、ユーザーが自分のプロフィールを削除するためのURL`delete-profile`も必要です。
+
+<br />
+
+`User`の代わりに`Video`ページを作ってみましょう。
+
+まず、ビデオ視聴ページである`watch-video`がございます。
+
+それから、ビデオの修正ページである`edit-video`もあるはずです。
+
+ご覧のとおり`edit`、`delete` URLは、何かを修正したり削除したりする振る舞いを表します。
+
+`/edit-profile`、`/delete-profile`の部分はuserに書き変えます。
+
+<div style="color:gray; font-size:12px;">Markdown</div>
+
+```markdown
+# Wetube Reloaded
+/ -> Home
+/join -> Join
+/login -> Login
+/search -> Search
+<!-- 
+/edit-profile -> Edit Profile
+/delete-profile -> Delete Profile
+-->
+/edit-user -> Edit User
+/delete-user -> Delete User
+
+/watch-video -> Watch Video
+/edit-video -> Edit Video
+/delete-video -> Delete Video
+```
+
+<div style="color:gray; font-size:11px;">README.md</div>  
+
+<br />
+
+今までの方法が悪いというわけではありませんが、最良の方法はルーターをドメイン別に分けることです。
+
+例えば、ユーザーのURLとビデオのURLを持ってきてルータの中に入れることです。
+
+<br />
+
+今からルーターが何か調べる前に、まずはルーターURLの中身を見てみましょう。
+
+作成したURLをまず分離して、`edit/delete`、`watch/edit/delete`について話してみましょう。
+
+`edit-user`と`delete-user`、`watch-video`、`edit-video`、`delete-video`を使う代わりに、`/users/edit`のように使うことができます。
+
+`/delete-user`代わりに`/users/delete`、`watch-video`は`videos/watch`、
+
+そして、`edit-video`は`/videos/edit`として使うことができます。
+
+それでは`delete`も同様に`/videos/delete`に修正します。
+
+<div style="color:gray; font-size:12px;">Markdown</div>
+
+```markdown
+/users/edit -> Edit User
+/users/delete -> Delete User
+
+/videos/watch -> Watch Video
+/videos/edit -> Edit Video
+/videos/delete -> Delete Video
+```
+
+<div style="color:gray; font-size:11px;">README.md</div> 
+
+<br />
+
+もうURLの区分があることに気づいたと思います。 これがルーターの役割です。
+
+<br />
+
+ルーターは、作業中のテーマに基づいたURLをグループ化してくれます。
+
+例えば、`/`、`/join`、`/search`もルータだと言えます。 ルートに近いページだけを持つルータですね。 これをグローバルルーター（global router）と呼びます。
+
+<br />
+
+そして、ユーザルーター（user router）、watch、edit、deleteするビデオルーター（video router）という別のルータがあります。
+
+もちろん、ビデオルーターには動画にコメントを残す`/videos/comments`のようなルーターもあります。
+
+あるいは`/videos/comments/delete`というルーターを使って、動画のコメントを削除することもできます。
+
+<div style="color:gray; font-size:12px;">Markdown</div>
+
+```markdown
+/videos/comments -> Comment on a video
+/videos/comments/delete -> Delete A Commnent of a Video
+```
+
+<div style="color:gray; font-size:11px;">README.md</div> 
+
+<br />
+
+今、現在のウェブサイトのURLを見てみましょう。
+
+<br />
+
+"`/wetube/lectures/`"の後に講義のidがつづくことが確認できるでしょう。
+
+ウェブサイトのナビゲーターで行ってみてください。 `/wetube/lobby`、`/wetube/lecture`など、このようなURLが確認できるはずです。
+
+これがルーターです。
+
+ルーターを説明するよりも直接見る方が大切だと思います。
+
+全てのURL、`watch`/`edit`/`delete`/`comments`
+
+そして、ユーザー向けのもう1つのURLを持つこともできます。
+
+ルーターはご覧のとおりとても便利です。
+
+ただ`/edit-user`、`/edit-video`、`/watch-videos`、`/comment-on-video`といったURLを使うよりも、ルーターを使う方が楽です。
+
+<br />
+
+ルーターは/usersを作り、その後にURLを追加していきます。
+
+<br />
+
+<br />
+
+### ⚡️
+
+ルーターとは？
