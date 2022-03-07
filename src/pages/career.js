@@ -1,14 +1,8 @@
-import * as React from 'react'
-import Layout from '../components/Layout'
-
+import * as React from "react";
+import Layout from "../components/Layout";
 
 const CareerPage = () => {
-  return (
-    <Layout>
-    </Layout>
-  )
-}
+  return <Layout pageTitle="Career"></Layout>;
+};
 
-
-export default CareerPage
-
+export default CareerPage;

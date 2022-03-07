@@ -1,10 +1,8 @@
-import * as React from 'react'
-import Layout from '../components/Layout'
+import * as React from "react";
+import Layout from "../components/Layout";
 
 const ProjectsPage = () => {
-    return (
-        <Layout pageTitle="Projects"></Layout>
-    )
-}
+  return <Layout pageTitle="Projects"></Layout>;
+};
 
-export default ProjectsPage
+export default ProjectsPage;
