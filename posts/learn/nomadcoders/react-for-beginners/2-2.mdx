@@ -1,0 +1,339 @@
+---
+icon: 📘
+title: "#2.2 Our First React Element"
+date: "2022-03-09"
+slug: nomadcoders/react-for-beginners/2-2
+folder: learn
+tags: [""]
+---
+
+[GitHub](https://github.com/leesiyun/react-for-beginners/commit/167f2dfb5dc7405058ca694d3e0696a3843b76b9)
+
+<br />
+
+이번 섹션에서는 React JS가 `element`를 어떻게 생성하는지 설명해보겠습니다.
+
+우리의 목표는 이전 섹션에서 만든 바닐라 JS로 만든 코드를 React JS로 다시 구현하는 것입니다.
+
+<br />
+
+자, React JS의 규칙 중 하나는 `HTML`을 직접 작성하지 않는다는 것입니다.
+
+그렇게 하는 대신에 Javascript 코드를 사용합니다.
+
+`span`이든 버튼이든 무엇을 만들기 위해서 `HTML`을 직접 작성하지 않고 `Javascript`와 `React JS`를 이용하여 `element`를 생성합니다.
+
+이건 매우 유용한데 나중에 왜 그런지 알게 될 것입니다.
+
+<br />
+
+이번 섹션에서는 `React JS`로 `element`를 생성하는 어려운 방법을 먼저 보여줄겁니다.
+
+이 방식은 개발자들이 작업하는 방식은 아닙니다.
+
+여러분도 알다시피 언제나 더 쉬운 방법이 있고 개발자들은 게으릅니다.
+
+도구를 제작해서 좀 더 생산적일 수 있을 겁니다.
+
+<br />
+
+이번에 다루는 React JS로 `element`를 생성하는 방식은 다른 사람들이 쓰지 않는 방식입니다.
+
+<br />
+
+모두 쉬운 방식으로 React JS를 사용하고, 여러분도 쉬운 방법을 좋아할 것입니다.
+
+그러나 먼저 어려운 방식을 이해해야합니다. 어려운 방법을 암기해야해서 그런게 아니고
+
+어려운 방식을 살펴보면서, React JS의 본질을 이해할 수 있을 겁니다.
+
+<br />
+
+이제 첫번째 React JS element를 만들어봅시다.
+
+클릭을 세기 위해선 `span`이 필요하니 먼저 `span`을 만들면서 시작해봅시다.
+
+여기에 `const span`을 작성합시다. 이름은 아무거나 상관없습니다.
+
+`HTML` 태그와 이름이 같을 필요가 없다는 뜻입니다.
+
+그리고 `React.createElement()`를 작성해줍시다.
+
+React를 `import`했기 때문에 `createElement` `function`을 가진 `React object`에 접근할 수 있습니다.
+
+괄호 안에는 “`span`”을 입력해 줍니다. 여기에 적는 `span`은 생성하고자하는 `HTML` 태그와 똑같은 이름이어야만 합니다.
+
+이렇게만 하면 React JS로 `element`를 생성한 것입니다.
+
+아주 간단합니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body></body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const span = React.createElement("span");
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+이제 브라우저에 와서 새로고침을 하면 현재 `body`는 비어있기 때문에 빈 페이지만 보일 것입니다.
+
+그러니 다음으로는 `span`을 페이지에 둘 수 있도록 설정해줍시다.
+
+물론 `span`은 이미 만들어져있습니다. `console`에서 `span`을 검색하면 확인이 가능합니다.
+
+우리가 아직 이해할 수 없는 이상한 `object`가 나옵니다.
+
+어쨌든 `span`은 존재하고, 생성되었지만 아직 페이지에 올라오지는 않은 상태입니다.
+
+<br />
+
+이제부터는 어떻게 `body`안에 `React element`를 가져다 둘 수 있는지 살펴봅시다.
+
+이전에 말했던대로 우리가 직접 작성하는 것이 아닌 `React JS`가 `HTML`을 생성할 것입니다.
+
+하지만 실제로 그렇게 하려면 `react-dom`을 사용해야합니다.
+
+`React JS`는 어플리케이션이 아주 `interactive`하도록 만들어주는 `library`이고 `react-dom`은 `library`, 또는 `package`인데 모든 `React element`들을 `HTML body`에 둘 수 있도록 해줍니다.
+
+`react`와 `react-dom`은 다른 역할을 하는 것입니다.
+
+React JS는 엔진으로 interative한 UI를 만들어주고 react-dom은 React element를 HTML에 두는 역할을 합니다.
+
+<br />
+
+다시 또 말하지만 우리는 지금 어려운 방식으로 작업하고 있고 실제 어플리케이션을 만들때는 이렇게 작업할 필요가 없습니다.
+
+나중에 여기 모든 것이 처음부터 포함된 React JS 프로젝트를 생성하는 법을 설명할거니까 걱정하지말고 지금은 React에 대해 이해해갑시다. 지금 이 모든건 암기할 필요가 없습니다.
+
+<br />
+
+이제 `ReactDOM`을 이용해 볼 건데 이것도 이미 i`mport`했기 때문에 사용가능합니다.
+
+`ReactDOM.render()`
+
+render의 의미는 여기 React element를 가지고 HTML로 만들어 배치한다는 것입니다.
+
+사용자에게 보여준다 그것이 render의 의미입니다. 이제 `span`을 render한다고 적어봅시다.
+
+그리고 ReactDOM에게 어디에 `span`을 둘건지 알려줍시다.
+
+지금 보면 아무 정보가 없습니다. ReactDOM은 `span`을 어디에 두어야할지 모르는 상태입니다.
+
+그래서 많은 사람은 body에 `id=”root”`를 가진 `div`를 만들고 ReactDOM에게 `span`을 root안에 두도록 만듭니다.
+
+이 방식으로 진행하기 위해서는 먼저, `root`를 가지고 와서 ReactDOM에게 span을 root안에 render해달라고 말해줘야합니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("span");
+    ReactDOM.render(span, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+위 코드 처럼 말이죠.
+
+위의 적은 `div`가 우리가 마지막으로 `body`안에 적는 HTML이 될것입니다.
+
+이 단계 이후로는, 모두 React의 방식대로 React element를 생성할 것입니다.
+
+일단 잘 작동하는 지 확인해봅시다.
+
+div안에 `id=”root”`가 들어있고 그 안에 span 있는지 까지 확인해봅시다.
+
+<br />
+
+방금 작성한 코드로 element를 만들고 root안에 넣어주었습니다.
+
+물론 `span`은 지금 비어있습니다.
+
+createElement에는 우리가 더 작성할 수 있는 argument가 있습니다.
+
+예를들어 두번째 argument로 둘 수 있는 것은 span의 property들입니다.
+
+<br />
+
+무엇이 `span`의 property가 될 수 있는지 예를 들어 봅시다.
+
+property는 class name이 될 수도 있고 id가 될 수도 있습니다.
+
+span에 두고 싶은 무엇이든 괜찮습니다.
+
+<br />
+
+지금 id가 “sexy-span”인 span을 만들어봅시다.
+
+이 id는 사용할려고 만드는 건 아니고 단지 지금 설명하기 위해 만드는 것입니다.
+
+그래서 React JS로 element를 생성하는 것이 얼마나 편리한 일인지 보여드리겠습니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("span", {id: "sexy-span"});
+    ReactDOM.render(span, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+이제 브라우저로가서 새로고침을 하면 이제 span의 id가 “`sexy-span`”인 것이 확인 가능합니다.
+
+단 한줄의 코드로 span을 만들고 id를 주었습니다.
+
+<br />
+
+아직 우리의 `span`은 비어있기때문에 이번엔 `span`을 채워봅시다.
+
+그건 createElement의 세 번째 argument로 들어갑니다.
+
+지금 설명하기 위해 이 방법을 사용하는 것이지 절대 다시 사용할일 없으므로 지금 이 사용법을 암기할 필요는 없습니다. 이번 강의에서만 사용합니다!
+
+다른 ReactJS 강의에서는 이렇게 사용하지 않을 겁니다.
+
+지금은 핵심을 파악하기 위해서 어려운 방식으로 사용하고 있고 곧 쉬운방법을 알려드릴겁니다.
+
+<br />
+
+계속해 봅시다. `createElement`의 세 번째 argument는 `span`의 content(내용)입니다.
+
+“Hello, I’m a span”이라고 적어봅시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement(
+        "span",
+        {id: "sexy-span"},
+        "Hello I'm a span"
+    );
+    ReactDOM.render(span, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+그리고 브라우저로 돌아가 새로고침을 하면 방금 적은 `Hello. I’m a span`을 확인 할 수 있습니다.
+
+이 HTML은 단 한 줄의 Javascript 코드로 만들어졌습니다.
+
+`React.createElement`를 사용해서 말이죠.
+
+첫 번째 argument는 “span”이었고 물론 어떤 태그든지 가능합니다. `div`든 `button`이든 상관없습니다.
+
+유효한 HTML 태그이기만 하면 됩니다.
+
+그리고 다음으로 `property`를 줄 수 있습니다. 어떤 property든지 두면 됩니다. 여기서 `style`도 바꿀 수 있습니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement(
+        "span",
+        {id: "sexy-span", style: {color: "red"}},
+        "Hello I'm a span"
+    );
+    ReactDOM.render(span, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+style 안에 `color: “red”`로 작성하면 됩니다.
+
+위 코드로 새로고침하면 빨간색 글씨로 변해있는 것이 확인 됩니다.
+
+<br />
+
+만약 여러분이 생각하기에 이게 너무 많은 작업이라면 그 생각이 맞습니다.
+
+`root`를 생성해야하고 두 가지를 `import` 해야 하고 `root`를 가져와야하고 `element`를 생성해야 하고 그리고 그 `element`를 `render`해야합니다. 고작 `span`을 페이지에 두는 것인데 말입니다.
+
+<br />
+
+이렇게 어려울 필요없이 페이지에 `span`을 두고 싶으면 그냥 `HTML`에 쓰는게 낫지않나 라는 생각이 들것입니다.
+
+이번 강의의 요점은 여러분들께 이 지루한 예제를 보여줌으로써 React JS는 우리가 해왔던 방식을 거꾸로 하고 있다는 것이었습니다.
+
+바닐라 JS에서는 HTML을 먼저 만들고, 그걸 Javascript로 가져와서 HTML을 수정하는 식이었다면 React JS는 모든 것이 Javascript로부터 시작합니다. 그리고 그 다음에 HTML이 되는 것입니다.
+
+그리고 이것이 바로 React JS 파워의 핵심입니다.
+
+Javascript와 React JS를 사용하여 element를 생성할 때에는 React JS가 업데이트가 필요한 element를 업데이트 합니다. 바로 React JS가 결과물인 HTML을 업데이트 할 수 있다는 것입니다.
+
+다시말해 React JS는 유저에게 보여질 내용을 컨트롤 할 수 있다는 뜻입니다. 그것이 바로 핵심입니다.
+
+HTML을 만들고 찾아서 가져오고 그러고 나서 업데이트하고 이런 식으로 하지않을 것입니다.
+
+React JS에게 업데이트 해야하는 HTML을 업데이트하라고 할 것입니다.
+
+<br />
+
+이렇게 하는 유일한 방식은 Javascript에서 시작하고, HTML에서 끝나는 것입니다.
+
+<br />
+
+id를 만들 필요없이 버튼도 찾아서 가져올 필요없이 다음 섹션에서는 이 섹션에 작성한 코드를 다시 고쳐보며 React JS의 심지어 더 좋은 점을 살펴보도록 하겠습니다.

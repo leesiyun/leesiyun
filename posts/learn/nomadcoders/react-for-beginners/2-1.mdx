@@ -1,0 +1,350 @@
+---
+icon: 📘
+title: "#2.1 Before React"
+date: "2022-03-08"
+slug: nomadcoders/react-for-beginners/2-1
+folder: learn
+tags: [""]
+---
+
+[GitHub](https://github.com/leesiyun/react-for-beginners/commit/d3840624881b08af1a146f85e84f18ec8c6a4277)
+
+이번 섹션에서는 아주 작은 바닐라 JS 어플리케이션을 만들어 봅시다.
+
+버튼을 몇번 클릭했는지 세는 어플입니다.
+
+아주 간단하지만, 이 과정에서 React JS로 개선할 수 있는 점들이 드러날것입니다.
+
+<br />
+
+아주 단순한 HTML 파일로 시작해봅시다.
+
+필요없는 걸 다 지우고 아주 기본적인 것만 남겨줬습니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body></body>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+interactive UI를 바닐라 JS로 만들기 위해 해야하는 가장 첫 번째 단계는 무엇일까요?
+
+바로 HTML을 작성하는 것입니다.
+
+`button` 태그를 두고 Click me라고 작성합시다.
+
+나중에는 다른 파일을 만들어 분리할 거지만 일단 여기에 script 태그를 열어 `const button = document.querySelector(”button”)`을 이용해 `button`을 가져옵시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <button>Click me</button>
+</body>
+<script>
+    const button = document.querySelector("button")
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+`button`이 많은 어플리케이션에서 사용하면 아마 어떤 `button`을 선택해야하는지 몰라 제대로 작동하지 않을 것 입니다.
+
+그래서 대부분의 경우는 `id`를 사용합니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <button id="btn">Click me</button>
+</body>
+<script>
+    const button = document.getElementById("btn")
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+`id=”btn”`을 입력하고 `getElementById`로 바꿔주었습니다.
+
+여기까지가 스텝 두 번째입니다.
+
+첫 번째 단계에서는 `HTML`을 만들었고 두 번째 단계에서는 `Javascript`에서 `button`을 가져왔습니다.
+
+<br />
+
+이제 세 번째 단계로 `button.addEventListener`로 `click event`를 감지해봅시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">JavaScript</div>
+
+```jsx
+button.addEventListener("clik");
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+잠깐 집고가자면 `click`을 `clik`이런 식으로 실수해도 알려주지 않기 때문에 정확하게 써야 한다는 걸 항상 염두해 두어야합니다.
+
+<br />
+
+자, 이제 `click`에 대응할 `handleClick` `function`을 만들어 봅시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <button id="btn">Click me</button>
+</body>
+<script>
+    const button = document.getElementById("btn");
+    function handleClick() {
+        console.log("i have been clicked")
+    }
+    button.addEventListener("click", handleClick);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+`function`을 작성했다면 브라우저로가서 새로고침을 하고 버튼을 입력하면 `i have been clicked`가 콘솔창에서 확인 가능할 것입니다.
+
+이것이 우리가 일반적인 바닐라 JS로 작업해 온 방식입니다.
+
+<br />
+
+이제 두 번째 난관인 클릭의 갯수를 셀 수 있도록 작성해 봅시다.
+
+`span` 태그를 열고 `Total clicks`이라고 작성합시다.
+
+0부터 시작할 겁니다. 이렇게 작성하고 누군가 버튼을 클릭하면 카운터를 가지고 `Total clicks` 이 증가 됩니다.
+
+그럼 카운터도 만들어 보겠습니다. 물론 카운터도 0부터 시작할 것입니다.
+
+누군가 클릭하면 `counter`를 가져와서 `counter + 1` 할 수 있도록 작성합시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+</body>
+<script>
+    let counter = 0;
+    const button = document.getElementById("btn");
+    function handleClick() {
+        counter = counter + 1;
+    }
+    button.addEventListener("click", handleClick);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+이제 브라우저로가 새로고침을 하고 클릭을 한 후에 `consloe`에 `counter`라고 쓰면 카운트 된 숫자가 나오는걸 확인 할수 있습니다.
+
+그러나 작동은 잘 되지만 페이지에는 반영되지 않습니다.
+
+왜냐하면 데이터가 바뀌어도 `HTML`이 새로고침되지 않기 때문입니다. `HTML`은 그냥 그 상태로 있습니다.
+
+그럼 무엇을 해야할까요?
+
+`Total click`이 써 있는 `span`을 가져와야합니다. `const span = document.querySelector(”span”)`을 사용해 `span`을 가져옵시다.
+
+그리고 `span.innterText`를 새로운 `counter`로 둡시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+</body>
+<script>
+    let counter = 0;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+    function handleClick() {
+        counter = counter + 1;
+        span.innerText = counter;
+    }
+    button.addEventListener("click", handleClick);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+<br />
+
+이제 새로고침을 클릭하면 일단 작동은 하는데 원래 있던 텍스트가 사라집니다.
+
+이전 텍스트를 기억할 수 있도록 설정해 줍시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+</body>
+<script>
+    let counter = 0;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+    function handleClick() {
+        counter = counter + 1;
+        span.innerText = `Total clicks: ${counter}`;
+    }
+    button.addEventListener("click", handleClick);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>{" "}
+
+이제 아주 완벽하게 작동합니다.
+
+그러나 지금까지 작성한 코드 양과 걸린 시간을 보십시오!
+
+<br />
+
+첫 번째 단계에서 `HTML`을 만들었고 두 번째 단계에서 `Javascript`에서 가져와 세 번째 단계, `event`를 감지하고 네 번째 단계, 데이터를 업데이트 했습니다.
+
+그리고 마지막으로 중요한 것은 `HTML`을 업데이트 하는 것을 잊으면 안되는 일입니다.
+
+<br />
+
+지금까지 작성한 것이 별거 아닌 것 같다고 생각할 수 도 있지만 계속 이런 방식으로 계속 가져와서 계속 `event listener`를 달고 `handleClick`을 만들고 `handleSecondClick`을 만들고 작업하다가는 (handle handle handle handle....) 점점 혼란스러워 질것입니다.
+
+<br />
+
+다시 말해 이렇게 작업하지 않아도 됩니다.
+
+물론 이런 방식으로만 기능을 작동시킬 수 있다면 ‘그래, 나쁘지 않네’ 정도로 말할 수 있을지도 모릅니다.
+
+그러나 오늘 이 자리에서 더 좋은 방식을 보여드리려고 합니다.
+
+더 편리하고, 더 나은 아이디어이며, 좀 더 설계된 방식을 보여드리겠습니다.
+
+<br />
+
+기억하고 비교하기 위해 지금까지 작성한 `index.html`파일을 `vanila.html`라는 파일을 만들어 옮겨줍시다.
+
+그리고 React JS로 작업한 코드와 비교를 해 봅시다.
+
+<br />
+
+자 이제 React의 시간입니다.
+
+이전에 했던 코드를 지워줍시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body></body>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+여러분이 처음으로 React가 작동하는 것을 볼 시간입니다.
+
+React로 무언가를 하기 전에 당연히 처음에는 React를 설치해야합니다.
+
+React JS를 설치하기 위해서는 두개의 Javascript코드를 `import` 해야합니다.
+
+`react`와 `react-dom`입니다.
+
+나중에 `react-dom`이 무엇인지 이야기 해볼겁니다.
+
+지금은 먼저 `import`한 후에 사용할 수 있는지를 확인해 봅시다.
+
+<br />
+
+`script`태그를 열고, `src`에 해당 `url`을 넣어줍니다.
+
+다른 것도 마찬가지로 복사해서 새로운 `script` 태그를 열고 `src`에 붙여주십시오.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body></body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+이제 브라우저로 돌아가 새로고침하면 아무것도 없어야 합니다.
+
+그러나 `console`에서 `React`를 부를 수 있게 되었습니다.
+
+이제 React가 코드에 있는걸 확인했습니다.
+
+<br />
+
+그러면 React가 우리 코드에 존재하기 때문에 이제 무엇이든지간에 `React.~~~`를 모두 사용할 수 있게 되었습니다.
+
+<br />
+
+제일 먼저 React를 `import`하고 react-dom도 `import`하면 이제 코드를 작성할 수 있습니다.
+
+<br />
+
+이번 섹션에서는 바닐라 JS로 작업을 했고 다음 섹션에서는 똑같은 것을 React JS를 가지고 만들어보겠습니다.
+
+React 규칙은 무엇인지 React로 어플리케이션을 어떻게 시작하는지 그리고 끝으로, 어떻게 React가 모든 것을 대체하는지 살펴보는 시간을 갖도록 하겠습니다.
