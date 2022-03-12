@@ -1,0 +1,156 @@
+---
+icon: 📘
+title: "#2.4 Recap"
+date: "2022-03-12"
+slug: nomadcoders/react-for-beginners/2-4
+folder: learn
+tags: [""]
+---
+
+이번 섹션에서는 지금까지 한 것을 복습해보는 시간을 갖겠습니다.
+
+첫 번째 React JS와 ReactDOM 코드를 import 했습니다.
+
+React JS는 반드시 필요합니다.
+
+React JS가 element를 생성하고 event listener를 더하는 것을 도와주기 때문입니다.
+
+바로 React JS 가 interactive power를 가지고 있는 것입니다.
+
+또한 우리는 ReactDOM도 import했습니다.
+
+React element들을 가져다가 HTML로 바꿔줘야 했기 때문입니다.
+
+이제 거기서 시작해봅시다.
+
+<br />
+
+가장 먼저, body에 비어있는 div를 생성했습니다.
+
+이 비어있는 div는 ReactDOM이 React element들을 가져다 놓을 곳입니다.
+
+그래서 그 root div를 가져온 후에 그 다음 ReactDOM.render를 했습니다.
+
+이 코드의 의미는 React element들을 root div안에서 보여주라는 뜻입니다.
+
+매우 간단합니다.
+
+이 이후에는 이런 방식으로 하진 않을 겁니다.
+
+이제 React 개발자로서, createElement를 쓸 일은 없을 것입니다.
+
+좀 더 쉽고 더 괜찮은 방법이 있습니다.
+
+어려운 방법이지만 이게 React JS의 기초고 핵심입니다.
+
+하지만 보면 알겠지만, 어려운 방식인데도 이해하기 정말 쉽습니다.
+
+ReactDOM은 container element를 root div 안에 render 해줍니다.
+
+여기서 container element는 div입니다.
+
+아무런 property도 없습니다.
+
+property는 이제까지 봤듯이 id나 class, event listener가 될 수 있습니다.
+
+그 중에서 아무것도 여기 없습니다.
+
+그리고 이 div의 content들은 h3와 btn입니다.
+
+이제 h3을 봅시다.
+
+h3는 그냥 단순한 h3입니다. header 3으로, HTML element입니다.
+
+propertyr가 좀 있고, content도 있습니다.
+
+React JS 개발자들 대부분 인생에 단 한번도 이 코드를 쓸일이 없기 때문에 여러분은 argument의 순서를 기억할 필요가 없습니다. 살면서 단 한번도 createElement를 쓰지 않습니다.
+
+<br />
+
+어쨌든, 첫 번째 argument는 root에 들어갈 HTML 태그 입니다.
+
+두 번째 argument는 props가 포함된 object이고 세 번째는 content입니다. 밑에 button도 똑같습니다.
+
+<br />
+
+이제 props를 살펴봅시다. 이전에 살펴봤듯이 props에서 id나 class를 바꿀 수 있습니다.
+
+색도 바꿀수 있었고 일반적인 HTML tag의 property로 부터 무엇이든지 바꿀 수 있었습니다.
+
+예를 들어, 여러분이 input을 가지고 있다고 가정해 봅시다.
+
+그러면 이 props에서 placeholder등 무엇이든 바꿀 수 있을 것입니다.
+
+중요한건 event listener에 있습니다.
+
+<br />
+
+React JS는 interactive한 어플리케이션을 만들기 위해 제작되었습니다.
+
+React 팀은 개발자들이 element에 event listener를 달아야 한다는 걸 알고 있습니다.
+
+바로 그 점이 React JS가 훌륭한 점입니다.
+
+property object에 event listener를 등록할 수 있습니다.
+
+우리가 addEventListener를 할 필요가 없습니다.
+
+그냥 준비가 되어있습니다.
+
+<br />
+
+이건 엄청 좋은 것입니다. React JS는 이러한 이유로 태어난 것입니다.
+
+interactive한 어플리케이션을 만들기 위해 제작되었습니다.
+
+지난 섹션에서 어떻게 작동하는지도 봤습니다.
+
+바닐라 JS에서 한 방식과 비교해보면 이 React 방식이 개발자에게 있더 더 편리합니다.
+
+여기까지가 우리가 해본 것들입니다.
+
+element를 어떻게 생성하는지 배웠고
+
+props object의 파워에 대해서도 배웠습니다.
+
+그리거 props object에서 일부는 HTML로 가는 것도 보았습니다.
+
+예를 들어 브라우저의 Elements 탭에서 작성한 style을 찾아볼 수 있습니다.
+
+또한 React JS는 스마트하기 때문에 어떤 것은 HTML로 가야하는데, 가끔 event listener와 같은 것들
+
+on으로 시작하는 것들 여러분이 원하는 만큼 쓸 수 있습니다.
+
+<br />
+
+우리는 일종의 거의 interactive한 React JS 어플리케이션을 만들었습니다.
+
+마지막 하나가 남았는데, 데이터를 업데이트 하는 작업입니다.
+
+이걸 다음 섹션에서 다루지는 않을 것입니다.
+
+다음 섹션에서는 React element를 생성하는 더 편리한 방식을 배워봅시다.
+
+<br />
+
+마지막으로 복습해봅시다.
+
+React JS와 ReactDOM을 먼저 설치했습니다. React JS는 interactivity의 원동력입니다.
+
+그리고 ReactDOM은 React element를 가져다가 HTML로 바꾸는 역할을 합니다.
+
+그 다음 우리는 세 개의 element를 생성했습니다.
+
+첫번째는 아무런 property를 가지지 않은 div h3과 button 두개의 element를 render해 줍니다.
+
+h3은 h3 HTML element입니다.
+
+몇몇의 property와 content를 가지고 있습니다.
+
+button 역시 button element이고
+
+마찬가지로 몇몇의 property와 content를 가지고 있습니다.
+
+여기서 중요한 것은 props안에서 event listener를 등록 할 수 있는 것 입니다.
+
+그리고 다시, React JS는 스마트하기 때문에 이건 event listener 인 것을 알고 이 id는 마지막으로 생성된 HTML에 있어야 한다는 것도 압니다.

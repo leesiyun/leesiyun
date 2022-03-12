@@ -1,0 +1,357 @@
+---
+icon: 📘
+title: "#2.3 Events in React"
+date: "2022-03-11"
+slug: nomadcoders/react-for-beginners/2-3
+folder: learn
+tags: [""]
+---
+
+[GitHub](https://github.com/leesiyun/react-for-beginners/commit/f25b4e098cc164edb6ec69665a7a9339cf0085eb)
+
+<br />
+
+이번 섹션에서는 버튼을 만들어 봅시다.
+
+그리고, 버튼에서 일어나는 event를 어떻게 감지하는지도 알아봅시다.
+
+<br />
+
+`button.addEventListener`, `button=document.getElement~~`, `id` 부분 모두 대체될 것입니다.
+
+이제 버튼을 생성해보겠습니다.
+
+<br />
+
+`const button`, `constant`의 이름은 `HTML`의 태그 이름과 반드시 일치할 필요는 없습니다.
+
+원하는 이름을 붙여주면 됩니다. 지금은 `btn`으로 두겠습니다.
+
+그 다음 `React.createElement()` 여기 괄호 안에는 HTML 태그 이름을 넣어주어야합니다.
+
+이전에 만든 span에는 property가 있지만 지금 만든 button에는 아무런 property가 없습니다.
+
+이전에 만든 span에도 property가 필요없으니 null이라고 수정하겠습니다.
+
+그리고 일단은 button의 property에도 null이라고 입력하겠습니다.
+
+그 다음 argument는 button의 content입니다. 여기에 Click me 라고 입력해 줍시다.
+
+이제 button을 render해야합니다.
+
+`span`을 `btn`으로 바꿔줍시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("span", null,"Hello I'm a span");
+    const btn = React.createElement("button", null, "Click me");
+    ReactDOM.render(btn, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+브라우저로가서 확인해보면 root 안에 `btn`을 render하고 잘 작동하는 것을 확인할 수 있습니다.
+
+<br />
+
+그런데 `span`과 `button`을 모두 render하고 싶을 경우에는 어떻게 할까요?
+
+이 경우 `const div=React.createElement(”div”)`를 입력해 `div` 태그 하나를 생성합니다.
+
+이 div에도 property는 없습니다.
+
+<br />
+
+이 다음엔 span, 그리고 button 순으로 render를 해봅시다.
+
+div의 세번째 argument에 array를 두면 가능합니다.
+
+그 array 안에 `span`과 `btn`을 입력해줍시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("span", null,"Hello I'm a span");
+    const btn = React.createElement("button", null, "Click me");
+    const div = React.createElement("div", null, [span, btn]);
+    ReactDOM.render(btn, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+헷갈리지 않게 `div`를 `container`라고 이름지어주고 `render`해봅시다.
+
+div를 render하지만 그 안에는 span과 button이 있습니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("span", null,"Hello I'm a span");
+    const btn = React.createElement("button", null, "Click me");
+    const container = React.createElement("div", null, [span, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+이제 브라우저로가 새로고침을 하면 div가 render 되었는데, 그 안에 `span`과 `button`이 있고 잘 작동되는 것이 확인될겁니다.
+
+보이는 모습을 바꾸기 위해서 span을 `h3`으로 바꿔봅시다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const span = React.createElement("h3", null,"Hello I'm a span");
+    const btn = React.createElement("button", null, "Click me");
+    const container = React.createElement("div", null, [span, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+기본적으로 2개의 component를 가지는 compoent를 생성해보았습니다.
+
+<br />
+
+이제 미션에 집중해봅시다.
+
+지금 주어진 미션은 바닐라 JS로 만든 어플리케이션에서 id=”btn”을 대체하고 button을 가져와서 addEventListener를 붙이고 그리고 listener function을 만드는 일입니다.
+
+<br />
+
+지금 우리는 이 작업을 하는 대신에, button에 property로 줄 수 있습니다.
+
+property는 지난 강의에서 봤던 것처럼 id, class name, 또는 style도 될 수 있습니다.
+
+하지만 그건 지루하고 뻔합니다.
+
+이번에는 button에 event listener를 줘보겠습니다.
+
+기본적으로는 button.addEventListener(”click”, handleClick) 이런 식으로 하는 걸 React JS 방식으로 만들어 보겠습니다.
+
+id나 style을 바꿀 수 있다는 것 말고도 peoperty에다 event listener를 등록할 수 있습니다.
+
+button.addEventListener 대신에 onClick이라고 적으면 됩니다.
+
+그러면 button이 클릭될 때마다 호출될 function을 작성할 수 있습니다.
+
+이것이 React JS의 POWER입니다.
+
+이전에 만든 4줄의 코드를 한번에 대체했습니다.
+
+혼동되지 않도록 span도 마찬가지로 이름을 h3로 바꾸겠습니다.
+
+이제 span에도 또 다른 event listener를 달 수 있습니다.
+
+이번에는 mouseenter를 사용해봅시다.
+
+h3에다가 새로운 event listener인 onMouseEnter:
+
+보다시피 event를 적는 방식이 조금 다릅니다. 바닐라 JS에서는 “click”을 사용했지만 React JS에서는 on을 사용합니다.
+
+on을 사용해야 React JS에게 event listener를 생성한다고 알려줄 수 있습니다.
+
+console.log ‘mouse enter’를 적어줍시다.
+
+이것이 React의 아름다움입니다. React가 빛나기 시작했습니다.
+
+여기 있는 statement만으로 HTML 코드를 만들고 content도 넣고, event listener도 등록했습니다.
+
+이것이 Javascript로 element를 생성하고 HTML로 바꾸는 방식의 힘입니다.
+
+이제 id=”btn”같은 걸 바닐라 JS로 만든 것 처럼 쓸 필요가 없이 그냥 createElement하고 HTML 태그를 선택하고, event를 이렇게 등록하면 됩니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const h3 = React.createElement("h3", {
+        onMouseEnter: () => console.log("mouse enter")
+    },"Hello I'm a span");
+    const btn = React.createElement("button", {
+        onClick: () => console.log("i'm clicked")
+    }, "Click me");
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+이제 브라우저로 가서 확인해봅시다.
+
+아주 잘 작동하고 있습니다.
+
+<br />
+
+단지 하나만의 statement만으로 이렇게 많이 해냈습니다.
+
+React JS는 바로 interactivity를 위해 제작되었습니다.
+
+interative한 어플리케이션에서 하는 작업들 모두가 event들을 감지하는 일이라는 걸 React JS 팀은 알고 있습니다.
+
+addEventListener를 반복하는 것 대신에 property에서 event를 등록할 수 있게 되었습니다.
+
+<br />
+
+다음 섹션에서는 element를 생성하는 방식을 더 쉽게 바꿔보겠습니다.
+
+그게 더 보기에 좋습니다.
+
+<br />
+
+하지만 지금 이제 돌아가는 상황을 이해하게 되었습니다.
+
+그리고 브라우저로가 HTML을 보면 무언가를 볼 수 있을 것입니다.
+
+React JS는 스마트하기 때문에, 우리가 event를 등록했다는걸 알고 있습니다.
+
+그래서 이 property는 HTML에서는 보이지 않습니다.
+
+물론 다시 돌아가 property에서 id를 바꾸려고 시도한다면
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const h3 = React.createElement("h3", {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter")
+    },"Hello I'm a span");
+    const btn = React.createElement("button", {
+        onClick: () => console.log("i'm clicked")
+    }, "Click me");
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+새로고침하면 입력한 React JS는 이 property가 HTML에 놓여야 한다는 걸 알기 때문에 id가 확인 가능합니다.
+
+예를 들어 style을 두고 backgroundColor: “tomato”로도 할 수 있습니다.
+
+<br />
+
+<div style="color:gray; font-size:12px;">HTML</div>
+
+```html
+<!DOCTYPE html>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    const h3 = React.createElement("h3", {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter"),
+    },"Hello I'm a span");
+    const btn = React.createElement("button", {
+        onClick: () => console.log("i'm clicked"),
+        style: {
+            backgroundColor: "tomato",
+        },
+    }, "Click me");
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+</script>
+</html>
+```
+
+<div style="color:gray; font-size:11px;">index.html</div>
+
+<br />
+
+HTML에 tomato라고 확인이 가능하고 버튼도 토마토 색상으로 변했습니다.
+
+그리고 그 옆 코드에서는 event listener를 등록하고 있습니다.
+
+<br />
+
+다음 섹션에서는 복습을 해보겠습니다.
+
+그리고 그 다음으로는, 이렇게 작성하지 않는, 다른 방식을 배워봅시다.
+
+지금 방법도 쉬워보이지만 더 쉬운 방법이 있습니다.
