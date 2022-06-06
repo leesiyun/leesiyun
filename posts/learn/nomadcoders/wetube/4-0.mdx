@@ -1,7 +1,7 @@
 ---
 icon: 📘
 title: "#4.0 What are Routers?"
-date: "2022-02-13"
+date: "2022-03-12"
 slug: nomadcoders/wetube/4-0
 folder: learn
 tags: [""]
@@ -9,27 +9,25 @@ tags: [""]
 
 <div style="color:gray; font-style:italic;">2022/02/13 일요일</div>
 
+<br />
+
 라우터는 컨트롤러와 `URL` 관리를 쉽게 해줍니다.
 
-쉽게 말해 미니 어플케이션을 만들게 해주는 것입니다.
-
-이건 모두 개발자를 위한 구조입니다.
+쉽게 말해 미니 어플케이션을 만들게 해주는 것이고, 이건 모두 개발자를 위한 구조입니다.
 
 <br />
 
-이제 README 파일에 라우터를 만들기 전에 플랜을 적어봅시다.
+라우터를 만들기 전에 README 파일에 플랜을 적어봅시다.
 
 라우터를 이해하는 가장 좋은 방법은 직접 만들어보고 프로젝트에 적용해 보는 것입니다.
 
-프로젝트에 대해 생각해볼때 가장 먼저 생각해야하는 건 어떤 종류의 데이터를 이용할 것인가 입니다.
+프로젝트에 대해 생각해볼때 가장 먼저 어떤 종류의 데이터를 이용할 것인가를 생각해야합니다.
 
 `wetube`에서는 크게 두가지 데이터가 존재합니다. 첫번째는 비디오(영상)입니다.
 
 영상을 업로드 할 수 있고, 수정할 수도 있고, 자막도 달 수 있습니다.
 
-그리고 원한다면 영상을 지울 수도 있습니다.
-
-그리고 이 모든걸 행하는 것은 유저입니다.
+그리고 원한다면 영상을 지울 수도 있습니다. 이 모든걸 행하는 것은 유저입니다.
 
 유저가 계정을 만들고, 로그인하고 프로필을 보는 것입니다.
 
@@ -37,50 +35,51 @@ tags: [""]
 
 그리고 패스워드를 변경할 수도 있습니다.
 
-이제 유저와 동영상이 가장 큰 두 개라는 걸 알 수 있을 겁니다.
+그러므로 유저와 동영상이 가장 큰 데이터 두 가지 라는 걸 알 수 있을 겁니다.
 
 그러니 `video`와 `user` 이 두가지가 흔히들 말하는 이번 프로젝트의 도메인입니다.
 
 이제 이 도메인을 `URL`의 차원에서 생각해 봅시다 . 그리고 `URL`을 디자인해 봅시다.
 
-예를 들어, `home` 페이지는 보통 브라우저에서 이렇게 보입니다. `/`
+예를 들어, `home` 페이지는 보통 브라우저에서 이렇게 `/`로 보입니다.
 
-그 다음엔 `join` 페이지가 있을 겁니다.
-
-그 다음으로는 로그인하기 위한 `login` 페이지가 있을 거고 검색(`search`)페이지가 있을 수도 있습니다.  
+그리고 `join` 페이지, 로그인하기 위한 `login` 페이지가 있을 거고 검색(`search`)페이지가 있을 수도 있습니다.
 
 <br />
 
-이제 유저 페이지를 생각해 봅시다. 유저 페이지에는 프로필 수정 페이지가 필요할 것 입니다.
+`User` 페이지에 대해 생각해 봅시다. 유저 페이지에는 프로필 수정 페이지( `/edit-profile`) 가 필요할 것입니다.
 
-그 `URL`은 `/edit-profile` 일거고, 이 `URL`를 통해  프로필 수정 페이지로 넘어갈 것입니다. 
+이 `URL`를 통해 프로필 수정 페이지로 이동할 수 있습니다.
 
 그리고 유저들이 자기 프로필을 삭제하기 위한 `URL` `delete-profile`도 필요합니다.
 
 <br />
 
-이제 `User` 대신 `Video`페이지를 만들어봅시다.
+`Video`페이지를 생각해 봅시다. 일단 동영상 시청 페이지인 `watch-video`가 있을 것입니다.
 
-일단 동영상 시청 페이지인 `watch-video`가 있을 것입니다.
-
-그리고 동영상 수정 페이지인 `edit-video`도 있을 것입니다. 
+그리고 동영상 수정 페이지인 `edit-video`도 있을 것입니다.
 
 보다시피 `edit`, `delete` `URL`은 무언가를 수정하거나 프로필을 삭제하거나 하는 행동을 나타냅니다.
 
-`/edit-profile`, `/delete-profile` 부분은 `user`로 바꿔주겠습니다.  
+`/edit-profile`, `/delete-profile` 부분은 `user`로 바꿔주겠습니다.
+
+<br />
 
 <div style="color:gray; font-size:12px;">Markdown</div>
 
 ```markdown
 # Wetube Reloaded
+
 / -> Home
 /join -> Join
 /login -> Login
 /search -> Search
-<!-- 
+
+<!--
 /edit-profile -> Edit Profile
 /delete-profile -> Delete Profile
 -->
+
 /edit-user -> Edit User
 /delete-user -> Delete User
 
@@ -88,11 +87,12 @@ tags: [""]
 /edit-video -> Edit Video
 /delete-video -> Delete Video
 ```
-<div style="color:gray; font-size:11px;">README.md</div>  
+
+<div style="color:gray; font-size:11px;">README.md</div>{" "}
 
 <br />
 
-지금까지의 방법이 나쁜 방법이라는 건 아니지만 최선의 방법은 라우터를 도메인 별로 나누는 것입니다.
+지금까지의 이야기 한 방법이 나쁜 방법은 아니지만 최선의 방법은 라우터를 도메인 별로 나누는 것입니다.
 
 예를 들면, 유저의 `URL`과 동영상의 `URL`을 가져와서 라우터 안에 넣는 것입니다.
 
@@ -106,7 +106,7 @@ tags: [""]
 
 `/delete-user`을 대신해서 `/users/delete`, `watch-video` 는 `videos/watch`,
 
-그리고 `edit-video` 는`/videos/edit` 로 사용할 수 있습니다. 
+그리고 `edit-video` 는`/videos/edit` 로 사용할 수 있습니다.
 
 그러면 `delete`도 마찬가지로 `/videos/delete`로 수정해 줍시다.
 
@@ -121,7 +121,7 @@ tags: [""]
 /videos/delete -> Delete Video
 ```
 
-<div style="color:gray; font-size:11px;">README.md</div>  
+<div style="color:gray; font-size:11px;">README.md</div>{" "}
 
 <br />
 
@@ -148,7 +148,7 @@ tags: [""]
 /videos/comments/delete -> Delete A Commnent of a Video
 ```
 
-<div style="color:gray; font-size:11px;">README.md</div>  
+<div style="color:gray; font-size:11px;">README.md</div>{" "}
 
 <br />
 
